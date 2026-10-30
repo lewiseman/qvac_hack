@@ -1,0 +1,19 @@
+{
+  "version": "0.1.2",
+  "buildNumber": 4,
+  "tag": "v0.1.2+4",
+  "downloadUrl": "https://github.com/lewiseman/journal/releases/latest/download/journal-arm64-v8a.apk",
+  "legacyDownloadUrl": "https://github.com/lewiseman/journal/releases/latest/download/journal.apk",
+  "artifactName": "journal-arm64-v8a.apk",
+  "buildType": "split-per-abi",
+  "sourceCommit": "2839eedb3985d8a037df50cd62f598561bb5cddc",
+  "sourceDirty": false,
+  "sizeBytes": 128699028,
+  "sha256": "81f0ff3b382f205bdbfa98cbb651566fe412846f00eac5df8c52c9f73f382d63",
+  "minSdk": 29,
+  "architectures": [
+    "arm64-v8a"
+  ],
+  "nativeLibraryCompression": true,
+  "signingCertificateSha256": "5cc444574571a02f949c5dd496b819a82d71d6ff7238c04c182abf8b84430319"
+}

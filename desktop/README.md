@@ -1,0 +1,77 @@
+# Journal Companion
+
+A small Electron companion for **macOS arm64**, with **31 text model options** across Qwen, Gemma, Llama, Mistral, Phi, Liquid AI and SmolLM. The picker groups popular choices, newer models to try and lightweight options, plus coding models and a **Heavy · performance testing** group. Sizes and memory guidance target an **M5 MacBook Pro with 24 GB unified memory**, with the largest experiments suggesting 32 GB or more. **Stable Diffusion 2.1 / SDXL 1.0** weights are also available to download for future image generation. It includes a bounded model library, writing assignment, secure phone pairing and encrypted durable text jobs. Read [the current contract, setup and verification limits](docs/CONNECTION.md).
+
+## Run and package
+
+Use Node 24.9+ and npm 10.9+ on Apple Silicon with macOS 14+. Allow several GB for development dependencies/build output, plus space for each chosen model. At least 4 GB RAM is required; the picker suggests 8–32 GB for larger choices. Text downloads range from about 491 MB to 22.02 GB. Memory guidance is advisory; the OS, other apps and inference cache also share unified memory. Initial npm/Electron installation requires internet.
+
+```sh
+cd /Users/lewis/Dev/Projects/Journal/desktop
+npm ci
+npm start
+```
+
+Open **Skills → Writing → Choose another** to compare writing options, download sizes and suggested memory. The Heavy group adds Qwen3 14B/32B, Qwen3 30B A3B Instruct 2507, Qwen3.5 27B/35B A3B, Gemma 3 27B and Mistral Small 3.2 24B. Open **Try it → Compare speed** to reuse a fixed prompt; each completed trial shows first-text latency, total response time and engine-reported tokens/s, with the last six trials kept in memory for comparison. Timings exclude model loading. The largest choices may fail to load on a 24 GB Mac. For writing models, **Download & use** downloads the pinned artifact from its listed publisher/converter on Hugging Face and loads it. **Use downloaded model** switches to installed writing weights without downloading again. You can also select the matching writing GGUF from disk or download without loading. The active writing model and assignment are remembered; other downloads stay on disk. Load verifies the full SHA-256 each time. Unload frees inference resources; quit releases the worker. See [all choices, publisher licenses and verification limits](docs/MODELS.md). Gemma 3 uses Google's Gemma Terms; Gemma 4 uses Apache 2.0. Llama uses Meta's community licenses, Liquid AI uses the LFM Open License, Qwen 2.5 3B uses a research license, and image weights use Open RAIL++-M. Built with Llama.
+
+Image entries have a **Download** action only. Their transfers run separately, with progress, cancellation and checksum verification, and leave the active writing model and phone writing availability unchanged. Image generation can be connected to desktop and phone workflows later. No weights are downloaded automatically.
+
+For authenticated Hugging Face downloads during development, copy `.env.example` to `.env` and set `HF_TOKEN`. `npm start` loads that file into the main process; restart after changing it. The downloader sends the token only to `https://huggingface.co`, never to its CDN redirects or the renderer. Real `.env` files are ignored by Git and excluded from app packages. Packaged apps can instead inherit `HF_TOKEN` from their launch environment.
+
+```sh
+npm test
+npm run package
+npm run make
+```
+
+The app is created at `out/Journal Companion-darwin-arm64/Journal Companion.app`; `make` also creates a ZIP under `out/make/zip/darwin/arm64/`. This is an **unsigned local preview**, not a notarized release. Apple Silicon Macs and 64-bit Windows are supported; Linux, Windows on Arm and Intel Macs are not. Renderer sandboxing is enabled in both development and packaged builds.
+
+### Building on Windows
+
+Build on a Windows x64 machine; packaging from macOS is not supported, because the Windows native QVAC packages only install on Windows.
+
+1. Install Node 24.9 or later (x64) and Git.
+2. Clone the repository and run `npm ci`. Don't copy `node_modules` from a Mac.
+3. Run `npm test`, then `npm start` for a development launch.
+4. Run `npm run make:win`. The app is in `out/Journal Companion-win32-x64/Journal Companion.exe`, and a portable ZIP is in `out/make/zip/win32/x64/`.
+
+The `.exe` is unsigned, so SmartScreen may say "Windows protected your PC". Choose **More info → Run anyway**. On first launch, allow Journal Companion through Windows Firewall on private networks so phones can reach port 47921 and find it over the local network. If discovery fails, pair with the QR code. On Windows the AI runs on the CPU (or Vulkan), so it is slower than Metal on a Mac. The `scripts/verify-*.cjs` evidence scripts are macOS-only.
+
+## Look and feel
+
+The window opens with a welcome book, a desktop version of the phone's onboarding book. It has four spreads (hello, privacy, get a writing brain, pair a phone), and they perform the real setup. After that, three screens take over:
+- **Home** shows the phone ⇄ Mac bridge, the work running now, and today's finished slips.
+- **Phones** handles pairing, code checks and trusted phones.
+- **Skills** has one card per ability: Writing, Listening, Search, Backgrounds, Seeing and Websites. Each card has a one-tap recommended download, and every model is still available under "Choose another".
+
+Use **Look** in the side bar to choose Light, Dark or Like my Mac. The choice is saved in `appearance.json` in the app's data folder. States are shown with icons, colours and motion first. "Listen" buttons read the guidance aloud using macOS's offline voices. The renderer is plain ES modules in `src/renderer/js`, with no bundler.
+
+The brand art comes from the Journal app's assets (`src/renderer/assets/art`). The bundled fonts are Poppins, Lora and Caveat, all under the SIL Open Font License; their licence files sit beside them in `src/renderer/assets/fonts`. `src/renderer-assets.cjs` serves only these renderer files, and only these types: html, css, js, ttf, webp, png and svg. The app icon is `assets/icon.icns`.
+
+## Privacy and files
+
+The app never reads the Flutter database. It sends no prompt or response to the internet. Desktop demo text stays in memory until clear or quit; accepted phone jobs use encrypted, bounded persistence described in the connection contract; OS swap/crash handling is outside this promise. Model selection, QVAC configuration/cache and downloaded weights are stored under Electron's `userData` directory (`~/Library/Application Support/Journal Companion` in a packaged normal launch). Selected external weights are read without modification. The UI never receives their filesystem path.
+
+The model downloader runs only on an explicit click, permits HTTPS redirects within Hugging Face hosts, verifies the pinned size/checksum, and renames the temporary file only after verification. Interrupted transfers are discarded and can be retried from the beginning. The app lists installed catalog models and can remove the active owned model after unloading it; external files are never deleted. Download resume and arbitrary model discovery are unavailable. The app does not expose QVAC administration or enable model seeding. Its opted-in phone service uses pinned TLS, per-device signing and desktop-approved trust. No telemetry, remote fonts, updater or renderer web access is configured.
+
+## Source control
+
+`desktop/` is an **independent Git repository**, initialized for this work. The workspace parent remains unversioned, and `journal/` retains its existing independent history. Add this repository to your preferred remote when ready; no remote or commit was created. Track source, tests, documentation and `package-lock.json`. Dependencies, generated QVAC bundles, model weights and packaged output are ignored. The Flutter connection lives in the existing, independently versioned journal/ repository.
+
+Read [D01 implementation and evidence](docs/D01.md) for architecture, exact versions, source references, verification instructions and platform limits.
+
+F01 saved-note summaries now use the same secure task service. See [summary limits and native verification](docs/SUMMARY.md).
+
+R01 [task recovery](docs/RECOVERY.md) adds durable acknowledgment/expiry receipts, cancellation fences, and packaged crash/restart verification for Flutter’s local task history.
+
+N01 adds [bounded reviewable writing operations](docs/NOTES.md) through the existing text assignment and durable device jobs.
+
+H01 adds [safe presentation proposals](docs/PRESENTATION.md) with grammar-constrained source-slot HTML and independently validated native rendering on Flutter.
+
+J01 adds [diary-day suggestions](docs/DIARY.md): a grammar-constrained title/mood/themes operation on the same durable job service.
+
+L01 adds [one-line Flow thought reflections](docs/REFLECTION.md) as a bounded `reflect-thought` operation.
+
+## Android voice
+
+Android microphone capture, duplex Whisper transcription, reviewed Notes/Flow text, and recoverable typed/spoken-input diary conversation are described in [VOICE.md](docs/VOICE.md). Load a multilingual Whisper model plus Silero VAD in the companion. Replies use text fallback; synthesized playback is unavailable. The guide records measured latency, retention/acceptance boundaries, setup, tests, and unverified physical-device/language coverage.

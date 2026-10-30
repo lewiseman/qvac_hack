@@ -1,0 +1,568 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:2813851369649388054",
+      "lastPropertyId": "21:1590178056721556746",
+      "name": "NoteEntity",
+      "properties": [
+        {
+          "id": "1:2810366167654696567",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1275130199014994003",
+          "name": "uuid",
+          "indexId": "1:1187237982892789379",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:4084030801031886450",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "4:5444154873844486445",
+          "name": "updatedAt",
+          "type": 10
+        },
+        {
+          "id": "5:7975137559754040149",
+          "name": "isDeleted",
+          "type": 1
+        },
+        {
+          "id": "6:4945566437981953096",
+          "name": "isPermanentlyDeleted",
+          "type": 1
+        },
+        {
+          "id": "7:1408172945766738891",
+          "name": "deletedAt",
+          "type": 10
+        },
+        {
+          "id": "8:3144850974462700999",
+          "name": "lastEditedByDeviceId",
+          "type": 9
+        },
+        {
+          "id": "9:2534386430684163311",
+          "name": "versionVectorJson",
+          "type": 9
+        },
+        {
+          "id": "10:6236924716457823617",
+          "name": "syncStatus",
+          "type": 6
+        },
+        {
+          "id": "11:8384237039018971314",
+          "name": "isConflict",
+          "type": 1
+        },
+        {
+          "id": "12:8190652972795150914",
+          "name": "conflictedWithUuid",
+          "type": 9
+        },
+        {
+          "id": "13:4280916733684026256",
+          "name": "tags",
+          "type": 30
+        },
+        {
+          "id": "14:7089984011989836030",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "15:3605357410708035982",
+          "name": "content",
+          "type": 9
+        },
+        {
+          "id": "16:3541142540743588089",
+          "name": "attachments",
+          "type": 13
+        },
+        {
+          "id": "17:4422921216969707430",
+          "name": "background",
+          "type": 13
+        },
+        {
+          "id": "18:6767032873498264914",
+          "name": "isPinned",
+          "type": 1
+        },
+        {
+          "id": "19:7324049614890551308",
+          "name": "presentationMode",
+          "type": 9
+        },
+        {
+          "id": "20:7806611058386502934",
+          "name": "website",
+          "type": 9
+        },
+        {
+          "id": "21:1590178056721556746",
+          "name": "websiteSourceHash",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:7208550162670336586",
+      "lastPropertyId": "14:7988663521190690088",
+      "name": "DiaryDayEntity",
+      "properties": [
+        {
+          "id": "1:2800538910753118418",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3305181412423342058",
+          "name": "dateString",
+          "indexId": "2:633249345277581821",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:7266924159420438544",
+          "name": "date",
+          "type": 10
+        },
+        {
+          "id": "4:3669926887996546604",
+          "name": "dayMood",
+          "type": 9
+        },
+        {
+          "id": "5:8159700721152754132",
+          "name": "daySummary",
+          "type": 9
+        },
+        {
+          "id": "6:2938454756476834909",
+          "name": "dayTitle",
+          "type": 9
+        },
+        {
+          "id": "7:7759441708017661154",
+          "name": "itemsJson",
+          "type": 9
+        },
+        {
+          "id": "8:6886136672241406709",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "9:3488522496239126443",
+          "name": "updatedAt",
+          "type": 10
+        },
+        {
+          "id": "10:4437682562125908917",
+          "name": "isDeleted",
+          "type": 1
+        },
+        {
+          "id": "11:1066250517904443179",
+          "name": "deletedAt",
+          "type": 10
+        },
+        {
+          "id": "12:7432670028997041036",
+          "name": "lastEditedByDeviceId",
+          "type": 9
+        },
+        {
+          "id": "13:1056146348533662325",
+          "name": "syncStatus",
+          "type": 6
+        },
+        {
+          "id": "14:7988663521190690088",
+          "name": "dayThemes",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:8825082589129948949",
+      "lastPropertyId": "3:2504568658632301327",
+      "name": "SyncRecordEntity",
+      "properties": [
+        {
+          "id": "1:9100519868856268660",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4592266756101005759",
+          "name": "key",
+          "indexId": "3:6584844874022537084",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:2504568658632301327",
+          "name": "value",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:8973498499901449446",
+      "lastPropertyId": "8:6281004086819928160",
+      "name": "ThoughtEntity",
+      "properties": [
+        {
+          "id": "1:253950550958929278",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7139737207969611192",
+          "name": "uuid",
+          "indexId": "4:8964008647399668782",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:4226235733963382394",
+          "name": "summary",
+          "type": 9
+        },
+        {
+          "id": "4:2730227751717900630",
+          "name": "content",
+          "type": 9
+        },
+        {
+          "id": "5:2817414168231961783",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "6:5489666800265285034",
+          "name": "updatedAt",
+          "type": 10
+        },
+        {
+          "id": "7:2350688174041914917",
+          "name": "lastEditedByDeviceId",
+          "type": 9
+        },
+        {
+          "id": "8:6281004086819928160",
+          "name": "syncStatus",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:6322996228141495349",
+      "lastPropertyId": "5:6801703998664039233",
+      "name": "SummaryTaskEntity",
+      "properties": [
+        {
+          "id": "1:2222787510232135417",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:148647328811157735",
+          "name": "taskId",
+          "indexId": "5:1235810767082045206",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:2260347803500938885",
+          "name": "created",
+          "type": 6
+        },
+        {
+          "id": "4:8850339582267964035",
+          "name": "active",
+          "type": 1
+        },
+        {
+          "id": "5:6801703998664039233",
+          "name": "metadata",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:3609962424508417693",
+      "lastPropertyId": "9:6608636891707987252",
+      "name": "NoteRecoveryEntity",
+      "properties": [
+        {
+          "id": "1:8916024477713817125",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3901218107132580458",
+          "name": "taskId",
+          "indexId": "6:4470568547534350548",
+          "type": 9,
+          "flags": 2080
+        },
+        {
+          "id": "3:2133562404257410957",
+          "name": "noteId",
+          "type": 9
+        },
+        {
+          "id": "4:8971232978737771235",
+          "name": "operation",
+          "type": 9
+        },
+        {
+          "id": "5:7659025338751406582",
+          "name": "beforeContent",
+          "type": 9
+        },
+        {
+          "id": "6:8203606482529895487",
+          "name": "afterContent",
+          "type": 9
+        },
+        {
+          "id": "7:4471358917546628283",
+          "name": "afterVersion",
+          "type": 9
+        },
+        {
+          "id": "8:4968379626984938001",
+          "name": "created",
+          "type": 6
+        },
+        {
+          "id": "9:6608636891707987252",
+          "name": "restored",
+          "type": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "8:8694165784092694088",
+      "lastPropertyId": "10:6154174911036584977",
+      "name": "DailyQuestionEntity",
+      "properties": [
+        {
+          "id": "1:1678039496414171939",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4961251716248178929",
+          "name": "day",
+          "indexId": "8:6622688242667964480",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "3:4821259643903947642",
+          "name": "question",
+          "type": 9
+        },
+        {
+          "id": "4:4415450998340195592",
+          "name": "sourceDate",
+          "type": 9
+        },
+        {
+          "id": "5:5694860718783037579",
+          "name": "sourceItem",
+          "type": 9
+        },
+        {
+          "id": "6:6685487861119646389",
+          "name": "evidence",
+          "type": 9
+        },
+        {
+          "id": "7:6259665631659420272",
+          "name": "ago",
+          "type": 6
+        },
+        {
+          "id": "8:5617869556945775443",
+          "name": "status",
+          "type": 9
+        },
+        {
+          "id": "9:5248481639841431040",
+          "name": "created",
+          "type": 6
+        },
+        {
+          "id": "10:6154174911036584977",
+          "name": "basis",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "9:4338801291709126047",
+      "lastPropertyId": "7:7978136620927170792",
+      "name": "ThoughtReflectionEntity",
+      "properties": [
+        {
+          "id": "1:5633627331030654739",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4788922969064448871",
+          "name": "thoughtUuid",
+          "indexId": "9:1231400627939627977",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "3:5187072622008305343",
+          "name": "revision",
+          "type": 9
+        },
+        {
+          "id": "4:1486779180849427759",
+          "name": "text",
+          "type": 9
+        },
+        {
+          "id": "5:7064184889825569290",
+          "name": "taskId",
+          "type": 9
+        },
+        {
+          "id": "6:6759143483410279261",
+          "name": "status",
+          "type": 9
+        },
+        {
+          "id": "7:7978136620927170792",
+          "name": "created",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "10:8376812898320850391",
+      "lastPropertyId": "9:6698555990144020189",
+      "name": "RecallVectorEntity",
+      "properties": [
+        {
+          "id": "1:734576971131126819",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4102957216261296845",
+          "name": "key",
+          "indexId": "10:4915891615479748511",
+          "type": 9,
+          "flags": 34848
+        },
+        {
+          "id": "3:8494359427007973062",
+          "name": "kind",
+          "indexId": "11:2304302578520560240",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "4:1654122303703388573",
+          "name": "sourceId",
+          "type": 9
+        },
+        {
+          "id": "5:3325094448619309918",
+          "name": "date",
+          "indexId": "12:1311020393233947875",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "6:8426255069431373139",
+          "name": "hash",
+          "type": 9
+        },
+        {
+          "id": "7:5154280546839780644",
+          "name": "model",
+          "indexId": "13:1052972767431013300",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "8:7976162838233403482",
+          "name": "dimensions",
+          "type": 6
+        },
+        {
+          "id": "9:6698555990144020189",
+          "name": "vector",
+          "indexId": "14:9072880904700263024",
+          "type": 28,
+          "flags": 8
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "10:8376812898320850391",
+  "lastIndexId": "14:9072880904700263024",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [
+    8632987772535014618
+  ],
+  "retiredIndexUids": [
+    4059988838941878495
+  ],
+  "retiredPropertyUids": [
+    8311469091311983583,
+    6907951170184909512,
+    1887138309386242050,
+    548624359035382779,
+    5116074273557097887,
+    8338728506673919612,
+    3071076729503788028,
+    2082740345693382024
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}

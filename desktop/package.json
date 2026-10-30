@@ -1,0 +1,45 @@
+{
+  "name": "journal-desktop",
+  "productName": "Journal Companion",
+  "version": "0.1.0",
+  "description": "Journal's secure local AI companion",
+  "private": true,
+  "main": "src/main.cjs",
+  "author": "Journal contributors",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=24.9.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.cjs",
+    "package": "electron-forge package --platform=darwin --arch=arm64",
+    "make": "electron-forge make --platform=darwin --arch=arm64",
+    "package:win": "electron-forge package --platform=win32 --arch=x64",
+    "make:win": "electron-forge make --platform=win32 --arch=x64",
+    "verify:packaged": "node scripts/verify-packaged.cjs",
+    "verify:connection": "node scripts/verify-connection.cjs",
+    "prestart": "node scripts/bundle-runtime.cjs",
+    "bundle:runtime": "node scripts/bundle-runtime.cjs",
+    "export:operations": "node scripts/export-operations.cjs",
+    "verify:operations": "node scripts/export-operations.cjs --check",
+    "pretest": "npm run verify:operations"
+  },
+  "overrides": {
+    "zod": "4.6.6"
+  },
+  "dependencies": {
+    "@qvac/registry-client": "0.7.0",
+    "@qvac/sdk": "0.22.0",
+    "bonjour-service": "1.4.4",
+    "qrcode": "1.5.4",
+    "selfsigned": "5.5.0",
+    "ws": "8.22.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "7.11.2",
+    "@electron-forge/maker-zip": "7.11.2",
+    "@electron-forge/plugin-base": "7.11.2",
+    "electron": "45.0.0"
+  }
+}

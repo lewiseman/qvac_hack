@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Journal Companion</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/book.css">
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/phones.css">
+  <link rel="stylesheet" href="styles/skills.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <div id="book" hidden></div>
+  <div id="app" class="app" hidden>
+    <nav id="rail" class="rail" aria-label="Sections"></nav>
+    <main class="views">
+      <section id="view-home" class="view" aria-label="Home"></section>
+      <section id="view-phones" class="view" aria-label="Phones"></section>
+      <section id="view-skills" class="view" aria-label="Skills"></section>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="alert"></div>
+</body>
+</html>
