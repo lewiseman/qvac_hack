@@ -255,14 +255,3 @@ The script runs tests, rebuilds the Android native runtime, builds and verifies 
 
 Adding `--publish` uploads a GitHub release and requires clean, committed, pushed source. Keep `env.json`, `android/key.properties`, signing keys, and tokens out of source control.
 
-## Contributing
-
-Contributions to the web, desktop, and mobile apps are welcome. Start in the relevant folder, read its README, and keep changes focused. Include a short description of the problem, the resulting behavior, and the checks you ran. For visual changes, include screenshots; for AI or device features, distinguish automated checks from tests on real hardware.
-
-Use synthetic journal content when testing or sharing examples. Keep personal writing, credentials, model weights, dependency folders, and generated build output out of contributions.
-
-## License and credits
-
-A project-wide license has not been added yet, and `desktop/package.json` currently declares `UNLICENSED`. The bundled `sync_wise` package has its [own license](journal/packages/sync_wise/LICENSE); it does not license the whole repository. Existing third-party notices remain in their respective folders.
-
-Fonts, native runtimes, and AI model weights have their own licenses. See the [QVAC adapter notices](journal/native/qvac/THIRD_PARTY_NOTICES.md) before redistributing those assets.
