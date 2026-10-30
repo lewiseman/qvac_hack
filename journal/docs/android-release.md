@@ -1,9 +1,9 @@
 # Android releases
 
-Journal is distributed from the public `lewiseman/journal` GitHub repository.
+Journal is distributed from the public `lewiseman/qvac_hack` GitHub repository.
 The ARM64 download URL is:
 
-<https://github.com/lewiseman/journal/releases/latest/download/journal-arm64-v8a.apk>
+<https://github.com/lewiseman/qvac_hack/releases/latest/download/journal-arm64-v8a.apk>
 
 Every published release contains `journal-arm64-v8a.apk`, its `.sha256` file,
 and `release.json`. Identical `journal.apk` and `journal.apk.sha256` compatibility
@@ -60,7 +60,7 @@ and exception type under `JournalWorklet` (`adb logcat -s JournalWorklet`).
   keystore and its passwords privately; **keep using the same key for updates**.
 - For publishing: GitHub authentication via `GH_TOKEN` / `GITHUB_TOKEN`,
   `gh auth login`, or the configured Git credential helper. A fine-grained token
-  needs **Contents: read and write** for `lewiseman/journal`. The script uses the
+  needs **Contents: read and write** for `lewiseman/qvac_hack`. The script uses the
   GitHub API directly, so installing `gh` is optional.
 
 Never commit the keystore, `key.properties`, tokens or `env.json`. Build output
@@ -69,7 +69,7 @@ as release assets.
 
 ## Prepare a build
 
-From the `journal/` checkout:
+From the repository root:
 
 ```sh
 python3 scripts/release_android.py

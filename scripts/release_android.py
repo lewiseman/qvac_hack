@@ -20,8 +20,8 @@ import urllib.parse
 import urllib.request
 import zipfile
 
-ROOT = Path(__file__).resolve().parents[1]
-REPOSITORY = "lewiseman/journal"
+ROOT = Path(__file__).resolve().parents[1] / "journal"
+REPOSITORY = "lewiseman/qvac_hack"
 APK_NAME = "journal-arm64-v8a.apk"
 DOWNLOAD_URL = f"https://github.com/{REPOSITORY}/releases/latest/download/{APK_NAME}"
 LEGACY_DOWNLOAD_URL = f"https://github.com/{REPOSITORY}/releases/latest/download/journal.apk"

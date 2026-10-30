@@ -26,7 +26,7 @@ class FakeGitHub:
         if endpoint == "releases/12/assets?per_page=100":
             return []
         if method == "PATCH":
-            return {"id": 12, "html_url": "https://github.com/lewiseman/journal/releases/tag/v0.1.0+2"}
+            return {"id": 12, "html_url": "https://github.com/lewiseman/qvac_hack/releases/tag/v0.1.0+2"}
         if endpoint == "releases/latest":
             return {"id": 12, "assets": [{"name": event[1]} for event in self.events if event[0] == "UPLOAD"]}
         raise AssertionError((method, endpoint))

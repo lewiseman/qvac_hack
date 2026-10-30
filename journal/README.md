@@ -118,7 +118,7 @@ and can upload again if reconnected before being cleared.
 
 For signed APK downloads, GitHub publishing and repeatable build updates, see
 [Android releases](docs/android-release.md). Run
-`python3 scripts/release_android.py` to prepare a build, or add `--publish`
+`python3 ../scripts/release_android.py` to prepare a build, or add `--publish`
 after committing and pushing the app source.
 
 Configure the app's Google OAuth clients and Drive app-data access. The existing
