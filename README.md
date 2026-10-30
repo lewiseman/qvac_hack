@@ -2,6 +2,8 @@
 
 Journal is a local-first journaling project with a Flutter mobile app, an Electron AI companion, and a React landing page. Write diary entries, keep notes, and capture passing thoughts in Flow. Your writing is stored locally in ObjectBox; Google Drive sync and local AI are optional.
 
+**Website:** [journal.lewiseman.com](https://journal.lewiseman.com/)
+
 **Demo video:** [Watch Journal in action](https://youtu.be/Ndbo28jEzL4)
 
 ## Features
