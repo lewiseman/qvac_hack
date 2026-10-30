@@ -201,7 +201,7 @@ def main():
             raise ReleaseError(f"Required command is missing: {command}.")
     for file in ("env.json", "android/key.properties"):
         if not (ROOT / file).is_file():
-            raise ReleaseError(f"Missing {file}; see docs/android-release.md. Never commit signing or OAuth configuration.")
+            raise ReleaseError(f"Missing {file}. Never commit signing or OAuth configuration.")
     if not json.loads((ROOT / "env.json").read_text()).get("GOOGLE_SERVER_CLIENT_ID"):
         raise ReleaseError("env.json must include GOOGLE_SERVER_CLIENT_ID for release sign-in.")
     tools = android_tools()

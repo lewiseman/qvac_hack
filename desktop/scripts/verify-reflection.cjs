@@ -1,6 +1,6 @@
 // L01 real-QVAC check under plain Node: the actual Runtime and durable Jobs
 // with a verified local model and an isolated data directory. Thoughts are
-// synthetic. Signed TLS transport is not exercised here (see docs/REFLECTION.md).
+// synthetic. Signed TLS transport is not exercised here.
 // Usage: node scripts/verify-reflection.cjs /absolute/new/empty/dir /absolute/model.gguf [catalog-model-id] > report.json
 const path = require('node:path');
 const fs = require('node:fs/promises');

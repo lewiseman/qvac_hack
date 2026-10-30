@@ -25,7 +25,6 @@ on startup/manual primary sync or after reclaiming the primary role.
 **People** opens friends, QR/text invitations, and disappearing P2P notes on
 Android. Both apps must be open. Notes exist in memory only and disappear after
 a text-length reading timer, on closing, or when Journal leaves the foreground.
-See [People setup, privacy and the device release gate](docs/people.md).
 
 More keeps the app's normal screen background, with bookcloth texture confined
 to the account card and subtle ink washes behind the illustrated
@@ -38,7 +37,7 @@ system's reduced-motion setting.
 The taller bookplate centers a large avatar above the user's name and folds
 into a pinned account strip when scrolling. The shared
 surface, palette and entry widgets can carry this style into More's subpages;
-those subpages keep their current designs for now. See [the style notes](docs/more-design.md).
+those subpages keep their current designs for now.
 The computer entry shows its connection status and opens pairing
 and connection management, with AI task history available on that page.
 When connected, tap the sync status panel to open Sync & devices for manual
@@ -116,8 +115,7 @@ and can upload again if reconnected before being cleared.
 
 ## Running and checking
 
-For signed APK downloads, GitHub publishing and repeatable build updates, see
-[Android releases](docs/android-release.md). Run
+For signed APK downloads, GitHub publishing and repeatable build updates, run
 `python3 ../scripts/release_android.py` to prepare a build, or add `--publish`
 after committing and pushing the app source.
 
@@ -144,19 +142,3 @@ was reused from the earlier project's `lib/`. Flutter mobile builds use
 bindings so existing database entity/property IDs are preserved.
 
 See `packages/sync_wise/README.md` for backend and collection adapter contracts.
-
-## Local QVAC
-
-See [connection setup and verification](docs/companion-connection.md) for the optional LAN companion in More.
-
-Saved-note AI summaries are implemented through the paired local companion. Read [usage, privacy, recovery and F01 verification](docs/note-summary.md).
-
-R01 adds [local AI task history and foreground recovery](docs/task-recovery.md) on the existing saved-note summary and desktop lifecycle.
-
-N01 adds [reviewable note writing and local prior-content recovery](docs/note-writing.md): explicit rewrite, expand, tone, grammar/clarity and Markdown actions for a saved body or passage.
-
-H01 adds [safe optional presentation](docs/safe-presentation.md) for saved notes and individual diary entries: source-preserving native styling, explicit review/accept/revert and local offline recovery.
-
-J01 adds [diary title, mood and theme suggestions](docs/diary-suggestions.md): manual day details plus optional grounded suggestions from the local computer, accepted field by field.
-
-L01 adds [optional one-line Flow reflections](docs/flow-reflections.md): ask for a reflection on one saved thought, then keep or dismiss it. The thought is never changed.

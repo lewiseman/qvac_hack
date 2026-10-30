@@ -48,7 +48,7 @@ The three apps run separately and have no root-level install or start command. Y
 - Use **Python 3** for the Android release script.
 - Initial dependency installation and model downloads need internet access. Model weights are downloaded separately from the apps and can take several GB.
 
-Desktop model memory guidance is based on an **M5 MacBook Pro with 24 GB of unified memory**; larger models can exceed that budget. The [on-device verification notes](journal/docs/on-device-ai-verification.md) record physical Android and arm64 iOS simulator checks. Physical iPhone AI validation is still pending.
+Desktop model memory guidance is based on an **M5 MacBook Pro with 24 GB of unified memory**; larger models can exceed that budget. On-device AI has been checked on physical Android and the arm64 iOS simulator. Physical iPhone AI validation is still pending.
 
 On macOS, if Java is not on your terminal's path, use Android Studio's bundled JDK:
 
@@ -125,7 +125,7 @@ flutter run -d <device-id>
 
 The current iOS target is **iOS 15+**. Use an arm64 simulator; Intel simulators are unsupported by the AI runtime. For a physical iPhone, open `journal/ios/Runner.xcworkspace` in Xcode and configure your development team and signing before running.
 
-If the native build cannot find the Ruby `xcodeproj` gem, see the Ruby and CocoaPods setup notes in the [on-device AI guide](journal/docs/on-device-ai.md).
+If the native build cannot find the Ruby `xcodeproj` gem, install it with `gem install xcodeproj`.
 
 ### Optional Google Drive sync
 
@@ -158,13 +158,13 @@ Sync transfers journal content and attachment metadata. **Photo, audio, and othe
 
 Open **More → Local QVAC**, choose **Phone**, and use its model setup controls to download and assign a compatible writing or image model. Start with a small writing model and keep the app in the foreground while a task runs. Phone AI runs one model/job at a time; leaving the foreground interrupts the task. Background generation uses Stable Diffusion 2.1 and needs a separate image-model download.
 
-**Computer** uses the paired desktop companion. **Auto** prefers a connected companion and otherwise uses a compatible assigned phone model for supported tasks. A task keeps the provider chosen when it starts; it does not switch machines after failure. Voice capture, scans, vision, website generation, and search by meaning currently need the companion. See [on-device AI setup and limits](journal/docs/on-device-ai.md).
+**Computer** uses the paired desktop companion. **Auto** prefers a connected companion and otherwise uses a compatible assigned phone model for supported tasks. A task keeps the provider chosen when it starts; it does not switch machines after failure. Voice capture, scans, vision, website generation, and search by meaning currently need the companion.
 
 ### People on Android
 
 Open **More → People** to invite a friend by QR/code and exchange temporary notes. People uses a separate HyperDHT/BareKit worker included in the Android native build. It does not require a Google account or the desktop companion.
 
-Both apps must remain open. Notes are kept in memory and disappear after the reading timer, closing the reader, or leaving the foreground. There is no offline inbox, message history, or automatic retry. Peer discovery uses the public HyperDHT network, and some firewalls or mobile networks prevent connections. Two-phone and carrier-network validation remains a release requirement in the [People guide](journal/docs/people.md).
+Both apps must remain open. Notes are kept in memory and disappear after the reading timer, closing the reader, or leaving the foreground. There is no offline inbox, message history, or automatic retry. Peer discovery uses the public HyperDHT network, and some firewalls or mobile networks prevent connections. Two-phone and carrier-network validation remains a release requirement.
 
 ## Desktop — `desktop/`
 
@@ -178,7 +178,7 @@ npm start
 
 `npm start` builds the QVAC worker before launching Electron. In the app, open **Skills → Writing**, choose a model, then select **Download & use**. Wait until the model is ready before requesting writing help from the phone. Other skills have their own model requirements; nothing downloads automatically.
 
-Writing, speech recognition, vision, embeddings, and background generation are separate capabilities. Android voice uses Whisper plus Silero VAD; diary conversation also needs a writing model. Vision must pass its image self-test before photo questions or scanning are ready. See the [voice](journal/docs/VOICE.md), [vision](desktop/docs/VISION.md), and [background-generation](desktop/docs/BACKGROUNDS.md) guides for the additional setup.
+Writing, speech recognition, vision, embeddings, and background generation are separate capabilities. Android voice uses Whisper plus Silero VAD; diary conversation also needs a writing model. Vision must pass its image self-test before photo questions or scanning are ready.
 
 For authenticated Hugging Face downloads, optionally copy `desktop/.env.example` to `desktop/.env`, set your own `HF_TOKEN`, and restart the companion. Keep that file private. Public model downloads do not require adding a token to the mobile app.
 
@@ -192,7 +192,7 @@ For authenticated Hugging Face downloads, optionally copy `desktop/.env.example`
 
 Allow local-network access when prompted. The companion uses IPv4 port **47921** and Bonjour discovery. Guest Wi-Fi, VPNs, or client isolation can prevent a connection; entering the QR/code manually bypasses discovery but still needs a reachable local connection.
 
-AI inference runs on the selected phone or computer. Google Drive sync is a separate, optional service. See the [pairing guide](journal/docs/companion-connection.md) and [desktop guide](desktop/README.md) for connection management, model storage, and task recovery.
+AI inference runs on the selected phone or computer. Google Drive sync is a separate, optional service. See the [desktop guide](desktop/README.md) for connection management, model storage, and task recovery.
 
 ### Package the companion
 
@@ -223,7 +223,7 @@ Run the relevant commands from the app folder you changed:
 | `journal/` | `flutter analyze`, `flutter test`, and `flutter test packages/sync_wise/test` |
 | `journal/native/qvac/` | `npm run check` and `npm run test:people` |
 
-People's additional Bare-runtime smoke check is `npm run test:people:bare` from `journal/native/qvac/`, with the `bare` command installed. Network tests use an isolated local DHT; they do not replace the physical-device checks in the [People guide](journal/docs/people.md).
+People's additional Bare-runtime smoke check is `npm run test:people:bare` from `journal/native/qvac/`, with the `bare` command installed. Network tests use an isolated local DHT; they do not replace physical-device checks.
 
 Host-side Flutter tests that open ObjectBox need a matching native ObjectBox library. This Mac setup uses the ignored `journal/lib/libobjectbox.dylib`; mobile builds get the runtime through `objectbox_flutter_libs`. See the [mobile testing notes](journal/README.md#running-and-checking).
 
@@ -241,7 +241,7 @@ npm run verify:operations
 dart run build_runner build
 ```
 
-For device integration tests on an installed Journal app, use `--no-uninstall` to retain local app data and pairing credentials. Device-specific setup is documented alongside each feature in `journal/docs/`.
+For device integration tests on an installed Journal app, use `--no-uninstall` to retain local app data and pairing credentials.
 
 ## Android release builds
 
@@ -253,7 +253,7 @@ python3 scripts/release_android.py
 
 The script runs tests, rebuilds the Android native runtime, builds and verifies a signed ARM64 APK, and writes release artifacts under `journal/build/releases/`. It also refreshes `bookflip/src/release.json` when that sibling folder is present.
 
-See the [Android release guide](journal/docs/android-release.md) for signing, versioning, download checksums, and publishing. Adding `--publish` uploads a GitHub release and requires clean, committed, pushed source. Keep `env.json`, `android/key.properties`, signing keys, and tokens out of source control.
+Adding `--publish` uploads a GitHub release and requires clean, committed, pushed source. Keep `env.json`, `android/key.properties`, signing keys, and tokens out of source control.
 
 ## Contributing
 
@@ -265,4 +265,4 @@ Use synthetic journal content when testing or sharing examples. Keep personal wr
 
 A project-wide license has not been added yet, and `desktop/package.json` currently declares `UNLICENSED`. The bundled `sync_wise` package has its [own license](journal/packages/sync_wise/LICENSE); it does not license the whole repository. Existing third-party notices remain in their respective folders.
 
-Fonts, native runtimes, and AI model weights have their own licenses. See the [QVAC adapter notices](journal/native/qvac/THIRD_PARTY_NOTICES.md) and [desktop model guide](desktop/docs/MODELS.md) before redistributing those assets.
+Fonts, native runtimes, and AI model weights have their own licenses. See the [QVAC adapter notices](journal/native/qvac/THIRD_PARTY_NOTICES.md) before redistributing those assets.

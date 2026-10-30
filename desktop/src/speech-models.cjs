@@ -2,7 +2,7 @@
 // Whisper files come from pinned Hugging Face revisions over HTTPS. QVAC's
 // Parakeet, MOSS and tts-ggml conversions are published only in the QVAC
 // registry, so those use `source: 'registry'` with the blob coordinates and
-// SHA-256 pinned in @qvac/inference 0.22 (checked 2026-10-28; see docs/MODELS.md).
+// SHA-256 pinned in @qvac/inference 0.22 (checked 2026-10-28).
 const WHISPER = { capability: 'transcription', engine: 'whispercpp-transcription', origin: 'OpenAI / ggml-org / Hugging Face',
   repository: 'ggerganov/whisper.cpp', revision: '5359861c739e955e79d9a303bcbc70fb988958b1', license: 'MIT' };
 const REGISTRY = { source: 'registry', revision: 'qvac-registry' };

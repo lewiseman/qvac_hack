@@ -10,7 +10,7 @@ const visionModels = require('./vision-models.cjs');
 const ocrModels = require('./ocr-models.cjs');
 const embeddingModels = require('./embedding-models.cjs');
 
-// Pinned publisher/converter repositories + LFS SHA-256 (see docs/MODELS.md).
+// Pinned publisher/converter repositories + LFS SHA-256.
 const MODELS = Object.freeze([{
   id: 'qwen2.5-0.5b-q4_k_m@9217f5db79a29953eb74d5343926648285ec7e67',
   name: 'Qwen2.5 · 0.5B Instruct',

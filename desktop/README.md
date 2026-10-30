@@ -1,6 +1,6 @@
 # Journal Companion
 
-A small Electron companion for **macOS arm64**, with **31 text model options** across Qwen, Gemma, Llama, Mistral, Phi, Liquid AI and SmolLM. The picker groups popular choices, newer models to try and lightweight options, plus coding models and a **Heavy · performance testing** group. Sizes and memory guidance target an **M5 MacBook Pro with 24 GB unified memory**, with the largest experiments suggesting 32 GB or more. **Stable Diffusion 2.1 / SDXL 1.0** weights are also available to download for future image generation. It includes a bounded model library, writing assignment, secure phone pairing and encrypted durable text jobs. Read [the current contract, setup and verification limits](docs/CONNECTION.md).
+A small Electron companion for **macOS arm64**, with **31 text model options** across Qwen, Gemma, Llama, Mistral, Phi, Liquid AI and SmolLM. The picker groups popular choices, newer models to try and lightweight options, plus coding models and a **Heavy · performance testing** group. Sizes and memory guidance target an **M5 MacBook Pro with 24 GB unified memory**, with the largest experiments suggesting 32 GB or more. **Stable Diffusion 2.1 / SDXL 1.0** weights are also available to download for future image generation. It includes a bounded model library, writing assignment, secure phone pairing and encrypted durable text jobs.
 
 ## Run and package
 
@@ -12,7 +12,7 @@ npm ci
 npm start
 ```
 
-Open **Skills → Writing → Choose another** to compare writing options, download sizes and suggested memory. The Heavy group adds Qwen3 14B/32B, Qwen3 30B A3B Instruct 2507, Qwen3.5 27B/35B A3B, Gemma 3 27B and Mistral Small 3.2 24B. Open **Try it → Compare speed** to reuse a fixed prompt; each completed trial shows first-text latency, total response time and engine-reported tokens/s, with the last six trials kept in memory for comparison. Timings exclude model loading. The largest choices may fail to load on a 24 GB Mac. For writing models, **Download & use** downloads the pinned artifact from its listed publisher/converter on Hugging Face and loads it. **Use downloaded model** switches to installed writing weights without downloading again. You can also select the matching writing GGUF from disk or download without loading. The active writing model and assignment are remembered; other downloads stay on disk. Load verifies the full SHA-256 each time. Unload frees inference resources; quit releases the worker. See [all choices, publisher licenses and verification limits](docs/MODELS.md). Gemma 3 uses Google's Gemma Terms; Gemma 4 uses Apache 2.0. Llama uses Meta's community licenses, Liquid AI uses the LFM Open License, Qwen 2.5 3B uses a research license, and image weights use Open RAIL++-M. Built with Llama.
+Open **Skills → Writing → Choose another** to compare writing options, download sizes and suggested memory. The Heavy group adds Qwen3 14B/32B, Qwen3 30B A3B Instruct 2507, Qwen3.5 27B/35B A3B, Gemma 3 27B and Mistral Small 3.2 24B. Open **Try it → Compare speed** to reuse a fixed prompt; each completed trial shows first-text latency, total response time and engine-reported tokens/s, with the last six trials kept in memory for comparison. Timings exclude model loading. The largest choices may fail to load on a 24 GB Mac. For writing models, **Download & use** downloads the pinned artifact from its listed publisher/converter on Hugging Face and loads it. **Use downloaded model** switches to installed writing weights without downloading again. You can also select the matching writing GGUF from disk or download without loading. The active writing model and assignment are remembered; other downloads stay on disk. Load verifies the full SHA-256 each time. Unload frees inference resources; quit releases the worker. Gemma 3 uses Google's Gemma Terms; Gemma 4 uses Apache 2.0. Llama uses Meta's community licenses, Liquid AI uses the LFM Open License, Qwen 2.5 3B uses a research license, and image weights use Open RAIL++-M. Built with Llama.
 
 Image entries have a **Download** action only. Their transfers run separately, with progress, cancellation and checksum verification, and leave the active writing model and phone writing availability unchanged. Image generation can be connected to desktop and phone workflows later. No weights are downloaded automatically.
 
@@ -58,20 +58,6 @@ The model downloader runs only on an explicit click, permits HTTPS redirects wit
 
 `desktop/` is an **independent Git repository**, initialized for this work. The workspace parent remains unversioned, and `journal/` retains its existing independent history. Add this repository to your preferred remote when ready; no remote or commit was created. Track source, tests, documentation and `package-lock.json`. Dependencies, generated QVAC bundles, model weights and packaged output are ignored. The Flutter connection lives in the existing, independently versioned journal/ repository.
 
-Read [D01 implementation and evidence](docs/D01.md) for architecture, exact versions, source references, verification instructions and platform limits.
-
-F01 saved-note summaries now use the same secure task service. See [summary limits and native verification](docs/SUMMARY.md).
-
-R01 [task recovery](docs/RECOVERY.md) adds durable acknowledgment/expiry receipts, cancellation fences, and packaged crash/restart verification for Flutter’s local task history.
-
-N01 adds [bounded reviewable writing operations](docs/NOTES.md) through the existing text assignment and durable device jobs.
-
-H01 adds [safe presentation proposals](docs/PRESENTATION.md) with grammar-constrained source-slot HTML and independently validated native rendering on Flutter.
-
-J01 adds [diary-day suggestions](docs/DIARY.md): a grammar-constrained title/mood/themes operation on the same durable job service.
-
-L01 adds [one-line Flow thought reflections](docs/REFLECTION.md) as a bounded `reflect-thought` operation.
-
 ## Android voice
 
-Android microphone capture, duplex Whisper transcription, reviewed Notes/Flow text, and recoverable typed/spoken-input diary conversation are described in [VOICE.md](docs/VOICE.md). Load a multilingual Whisper model plus Silero VAD in the companion. Replies use text fallback; synthesized playback is unavailable. The guide records measured latency, retention/acceptance boundaries, setup, tests, and unverified physical-device/language coverage.
+Android microphone capture, duplex Whisper transcription, reviewed Notes/Flow text, and recoverable typed/spoken-input diary conversation are supported. Load a multilingual Whisper model plus Silero VAD in the companion. Replies use text fallback; synthesized playback is unavailable.

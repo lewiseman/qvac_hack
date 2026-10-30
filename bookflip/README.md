@@ -48,8 +48,7 @@ npm run build
 The app source must be committed and pushed before `--publish`. After publishing,
 commit and push this website's generated metadata and page changes using the
 existing hosting setup. The stable download URL needs no edits for future
-versions. See [the app's release guide](https://github.com/lewiseman/qvac_hack/blob/main/journal/docs/android-release.md) for
-signing, OAuth, version increments and build-only previews.
+versions.
 
 ## Artwork
 
