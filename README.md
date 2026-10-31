@@ -8,6 +8,10 @@ Journal is a local-first journaling project with a Flutter mobile app, an Electr
 
 **Voice Demo video:** [Watch Journal in action](https://www.youtube.com/watch?v=wmvlNUro4z4)
 
+offline_video.mp4 attached at the root folder
+on device video demo working with airplane mode on, generating a note idea , without relying on the companion app if your far from it , voice not yet implemented for mobile on device yet .
+
+
 ## Features
 
 | Area | What is implemented |
